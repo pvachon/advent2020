@@ -31,23 +31,21 @@ begin
     end loop;
 
     for I in num_array'Range loop
-        for J in num_array'Range loop
-            if I /= J then
-                for K in num_array'Range loop
-                    if K /= J and K /= I then
-                        if num_array(I) + num_array(J) + num_array(K) = 2020 then
-                            Text_IO.Put_Line("Found: " &
-                                Integer'Image(num_array(I)) &
-                                " and " &
-                                Integer'Image(num_array(J)) &
-                                " and " &
-                                Integer'Image(num_array(K)) &
-                                " -> " &
-                                Integer'Image(num_array(I) * num_array(J) * num_array(K)));
-                        end if;
+        for J in I + 1 .. num_array'Last loop
+            for K in num_array'Range loop
+                if K /= J and K /= I then
+                    if num_array(I) + num_array(J) + num_array(K) = 2020 then
+                        Text_IO.Put_Line("Found: " &
+                            Integer'Image(num_array(I)) &
+                            " and " &
+                            Integer'Image(num_array(J)) &
+                            " and " &
+                            Integer'Image(num_array(K)) &
+                            " -> " &
+                            Integer'Image(num_array(I) * num_array(J) * num_array(K)));
                     end if;
-                end loop;
-            end if;
+                end if;
+            end loop;
         end loop;
     end loop;
 
